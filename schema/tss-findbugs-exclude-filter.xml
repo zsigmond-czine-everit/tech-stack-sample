@@ -18,8 +18,8 @@
 -->
 <FindBugsFilter>
   <Match>
-    org.everit.authentication.oauth2.ri.schema.qdsl
-    <Package name="~org\.everit\.authentication\.oauth2\.ri\.schema\.qdsl.*" />
+    org.everit.tech.stack.sample.schema.qdsl
+    <Package name="~org\.everit\.tech\.stack\.sample\.schema\.qdsl.*" />
   </Match>
   <Match>
     <Bug pattern="SE_BAD_FIELD, URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />

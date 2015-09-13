@@ -22,7 +22,7 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-  <changeSet id="1.0.0" author="zsigmond-czine">
+  <changeSet id="v001" author="zsigmond-czine">
 
     <createTable tableName="tss_user">
       <column name="user_id" type="bigint" autoIncrement="true">
@@ -54,6 +54,7 @@
       baseColumnNames="user_id" referencedTableName="tss_address" referencedColumnNames="user_id" />
 
   </changeSet>
+
 
 </databaseChangeLog>
 

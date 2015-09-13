@@ -16,13 +16,12 @@
     limitations under the License.
 
 -->
-<databaseChangeLog objectQuotingStrategy="QUOTE_ALL_OBJECTS" logicalFilePath="org.everit.tech.stack.sample.schema"
-  xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
-        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-        
-  <!-- Changelogs in the correct order -->
-  <include file="META-INF/liquibase/tss.changelog-v001.xml" />
-
-</databaseChangeLog>
+<FindBugsFilter>
+  <Match>
+    org.everit.authentication.oauth2.ri.schema.qdsl
+    <Package name="~org\.everit\.authentication\.oauth2\.ri\.schema\.qdsl.*" />
+  </Match>
+  <Match>
+    <Bug pattern="SE_BAD_FIELD, URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD" />
+  </Match>
+</FindBugsFilter>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2011 Everit Kft. (http://www.everit.org)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<databaseChangeLog objectQuotingStrategy="QUOTE_ALL_OBJECTS" logicalFilePath="org.everit.tech.stack.sample.schema"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+  <changeSet id="1.0.0" author="zsigmond-czine">
+
+    <createTable tableName="tss_user">
+      <column name="user_id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="user_name" type="java.sql.Types.VARCHAR(10)">
+        <constraints nullable="false" />
+      </column>
+      <column name="email_address" type="java.sql.Types.VARCHAR(100)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+
+    <createTable tableName="tss_address">
+      <column name="address_id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="user_id" type="java.sql.Types.VARCHAR(10)">
+        <constraints nullable="false" />
+      </column>
+      <column name="city" type="java.sql.Types.VARCHAR(100)">
+        <constraints nullable="false" />
+      </column>
+      <column name="country" type="java.sql.Types.VARCHAR(100)" />
+      <column name="street" type="java.sql.Types.VARCHAR(100)" />
+    </createTable>
+
+    <addForeignKeyConstraint constraintName="fk_address_user" baseTableName="tss_user"
+      baseColumnNames="user_id" referencedTableName="tss_address" referencedColumnNames="user_id" />
+
+  </changeSet>
+
+</databaseChangeLog>
+

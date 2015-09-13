@@ -86,41 +86,6 @@
           </instructions>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.everit.osgi.dev</groupId>
-        <artifactId>lqmg-maven-plugin</artifactId>
-        <version>3.0.1</version>
-        <configuration>
-          <defaultSchema>org.everit.authentication.oauth2.ri</defaultSchema>
-          <capability>org.everit.authentication.oauth2.ri</capability>
-          <packages>org.everit.authentication.oauth2.ri.schema.qdsl</packages>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.8</version>
-        <executions>
-          <execution>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src/main/generated/java/</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-<!--       <plugin> -->
-<!--         <groupId>org.codehaus.mojo</groupId> -->
-<!--         <artifactId>findbugs-maven-plugin</artifactId> -->
-<!--         <configuration> -->
-<!--           <excludeFilterFile>oauth2-schema-findbugs-exclude-filter.xml</excludeFilterFile> -->
-<!--         </configuration> -->
-<!--       </plugin> -->
     </plugins>
   </build>
 </project>

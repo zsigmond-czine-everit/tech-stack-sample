@@ -133,7 +133,7 @@
 
   <dependencies>
 
-    <!-- Basic dependencies to tests -->
+    <!-- Basic dependencies -->
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.core</artifactId>
@@ -146,7 +146,6 @@
       <version>4.3.1</version>
       <scope>provided</scope>
     </dependency>
-
     <dependency>
       <groupId>org.everit.osgi.dev</groupId>
       <artifactId>org.everit.osgi.dev.testrunner.junit4</artifactId>
@@ -252,22 +251,6 @@
       <version>1.0.0-v20140107</version>
     </dependency>
 
-    <!-- ECM -->
-    <dependency>
-      <groupId>org.everit.osgi</groupId>
-      <artifactId>org.everit.osgi.ecm.extender.ri</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.everit.osgi</groupId>
-      <artifactId>org.everit.osgi.ecm.component.ri</artifactId>
-      <version>1.2.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.everit.osgi</groupId>
-      <artifactId>org.everit.osgi.ecm.component.webconsole</artifactId>
-      <version>1.0.0</version>
-    </dependency>
   </dependencies>
 
 </project>

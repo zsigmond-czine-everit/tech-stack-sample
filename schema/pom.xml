@@ -78,13 +78,40 @@
 
             </Export-Package>
             <Require-Capability>
-
             </Require-Capability>
             <Provide-Capability>
-
+              liquibase.schema;name=org.everit.tech.stack.sample.schema;resource=/META-INF/liquibase/tss.changelog-master.xml;lqmg.config.resource=/META-INF/liquibase/tss.lqmg.xml
             </Provide-Capability>
           </instructions>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.everit.osgi.dev</groupId>
+        <artifactId>lqmg-maven-plugin</artifactId>
+        <version>3.0.1</version>
+        <configuration>
+          <defaultSchema>org.everit.tech.stack.sample.schema</defaultSchema>
+          <capability>org.everit.tech.stack.sample.schema</capability>
+          <packages>org.everit.tech.stack.sample.schema.qdsl</packages>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/main/generated/java/</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

@@ -79,7 +79,7 @@
             </Export-Package>
             <EOSGi-TestNum>0</EOSGi-TestNum>
             <Require-Capability>
-
+              liquibase.schema;filter:="(name=org.everit.tech.stack.sample.schema)"
             </Require-Capability>
             <Provide-Capability>
 
@@ -132,6 +132,11 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.everit.tech.stack.sample</groupId>
+      <artifactId>org.everit.tech.stack.sample.schema</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
 
     <!-- Basic dependencies -->
     <dependency>
@@ -251,6 +256,55 @@
       <version>1.0.0-v20140107</version>
     </dependency>
 
+    <!-- Database related modules -->
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.liquibase.datasource</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.liquibase.bundle</artifactId>
+      <version>3.1.1-v20140507</version>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.jdbc.dsf</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.jdbc.commons.dbcp</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.189</version>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.jtds.component</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.spec.osgi</groupId>
+      <artifactId>ow2-jdbc-service-1.0-spec</artifactId>
+      <version>1.0.13</version>
+    </dependency>
+    
+    <!-- Dependencies needed by QueryDSL -->
+    <dependency>
+      <groupId>org.apache.servicemix.bundles</groupId>
+      <artifactId>org.apache.servicemix.bundles.jsr305</artifactId>
+      <version>2.0.0_1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.servicemix.bundles</groupId>
+      <artifactId>org.apache.servicemix.bundles.javax-inject</artifactId>
+      <version>1_2</version>
+    </dependency>
+    
   </dependencies>
 
 </project>

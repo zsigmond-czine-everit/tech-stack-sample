@@ -20,8 +20,11 @@ In 'tests' module we find a minimal configuration that able to run integration t
 
 (**DRAFT**)
 ## Sections 
-* schema definition with Liquibase and schema generation
-* ECM - create Components
+* schema definition with Liquibase and schema generation - 01-schema
+* database configuration in tests module (system console) - 02-database-config
+* ECM create core components
+* ECM configuration in tests module. (system console)
+* create tests components and configure in system console
 * web (TODO must be split) 
 
 some key word

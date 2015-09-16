@@ -72,20 +72,69 @@
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
             <Import-Package>
+              org.everit.tech.stack.sample,
+              org.everit.tech.stack.sample.dto,
+              org.everit.tech.stack.sample.schema.qdsl,
               *
             </Import-Package>
-            <Export-Package>
-
-            </Export-Package>
-            <Require-Capability>
-
-            </Require-Capability>
-            <Provide-Capability>
-
-            </Provide-Capability>
           </instructions>
         </configuration>
       </plugin>
     </plugins>
   </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.everit.tech.stack.sample</groupId>
+      <artifactId>org.everit.tech.stack.sample.api</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.tech.stack.sample</groupId>
+      <artifactId>org.everit.tech.stack.sample.schema</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.transaction.helper</artifactId>
+      <version>2.0.1</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>org.apache.felix.scr.annotations</artifactId>
+          <groupId>org.apache.felix</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.querydsl.support</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <!-- ProvideCapability in component -->
+    <dependency>
+      <groupId>biz.aQute.bnd</groupId>
+      <artifactId>biz.aQute.bndlib</artifactId>
+      <version>2.4.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- ECM API -->
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.ecm.extender.api</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.ecm.annotation</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.everit.osgi</groupId>
+      <artifactId>org.everit.osgi.ecm.component.api</artifactId>
+      <version>1.1.0</version>
+    </dependency>
+    
+  </dependencies>
 </project>

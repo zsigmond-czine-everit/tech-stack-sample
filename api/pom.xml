@@ -75,14 +75,9 @@
               *
             </Import-Package>
             <Export-Package>
-
+              org.everit.tech.stack.sample,
+              org.everit.tech.stack.sample.dto
             </Export-Package>
-            <Require-Capability>
-
-            </Require-Capability>
-            <Provide-Capability>
-
-            </Provide-Capability>
           </instructions>
         </configuration>
       </plugin>

@@ -75,7 +75,7 @@
               *
             </Import-Package>
             <Export-Package>
-
+              org.everit.tech.stack.sample.schema.qdsl
             </Export-Package>
             <Require-Capability>
             </Require-Capability>

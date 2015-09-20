@@ -15,11 +15,14 @@
  */
 package org.everit.tech.stack.sample.internal;
 
+import java.util.regex.Pattern;
+
 import org.everit.osgi.ecm.annotation.Component;
 import org.everit.osgi.ecm.annotation.ConfigurationPolicy;
 import org.everit.osgi.ecm.annotation.Service;
 import org.everit.osgi.ecm.annotation.attribute.StringAttribute;
 import org.everit.osgi.ecm.extender.ECMExtenderConstants;
+import org.everit.tech.stack.sample.utils.MetaDataUtil;
 
 import aQute.bnd.annotation.headers.ProvideCapability;
 
@@ -36,10 +39,6 @@ public class InternalValidatorManagerComponent {
 
   private String emailAddressRegex;
 
-  public String getEmailAddressRegex() {
-    return emailAddressRegex;
-  }
-
   @StringAttribute(attributeId = PROP_EMAIL_ADDRESS_REGEX,
       defaultValue = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*"
           + "(\\.[A-Za-z]{2,})$")
@@ -47,29 +46,65 @@ public class InternalValidatorManagerComponent {
     this.emailAddressRegex = emailAddressRegex;
   }
 
+  /**
+   * Validate city.
+   */
   public void validateCity(final String city) {
-    // TODO Auto-generated method stub
+    if ((city == null) || city.isEmpty()) {
+      throw new RuntimeException("city is required");
+    }
 
+    if (city.length() > MetaDataUtil.getCityLength()) {
+      throw new RuntimeException("city is too length");
+    }
   }
 
+  /**
+   * Validate country.
+   */
   public void validateCountry(final String country) {
-    // TODO Auto-generated method stub
-
+    if (country.length() > MetaDataUtil.getCountryLength()) {
+      throw new RuntimeException("country is too length");
+    }
   }
 
+  /**
+   * Validate email address.
+   */
   public void validateEmailAddress(final String emailAddress) {
-    // TODO Auto-generated method stub
+    if ((emailAddress == null) || emailAddress.isEmpty()) {
+      throw new RuntimeException("city is required");
+    }
 
+    if (!Pattern.matches(emailAddressRegex, emailAddress)) {
+      throw new RuntimeException("emailAddress is not valid");
+    }
+
+    if (emailAddress.length() > MetaDataUtil.getEmailAddressLength()) {
+      throw new RuntimeException("city is too length");
+    }
   }
 
+  /**
+   * Validate street.
+   */
   public void validateStreet(final String street) {
-    // TODO Auto-generated method stub
-
+    if (street.length() > MetaDataUtil.getStreetLength()) {
+      throw new RuntimeException("street is too length");
+    }
   }
 
+  /**
+   * Validiate user name.
+   */
   public void validateUserName(final String userName) {
-    // TODO Auto-generated method stub
+    if ((userName == null) || userName.isEmpty()) {
+      throw new RuntimeException("userName is required");
+    }
 
+    if (userName.length() > MetaDataUtil.getUseNameLength()) {
+      throw new RuntimeException("userName is too length");
+    }
   }
 
 }

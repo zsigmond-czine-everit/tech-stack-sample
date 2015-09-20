@@ -58,7 +58,7 @@ public class QAddress extends com.mysema.query.sql.RelationalPathBase<QAddress> 
 
     public final StringPath street = createString("street");
 
-    public final StringPath userId = createString("userId");
+    public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
     public final PrimaryKeys pk = new PrimaryKeys();
 
@@ -89,7 +89,7 @@ public class QAddress extends com.mysema.query.sql.RelationalPathBase<QAddress> 
         addMetadata(city, ColumnMetadata.named("city").ofType(12).withSize(100).notNull());
         addMetadata(country, ColumnMetadata.named("country").ofType(12).withSize(100));
         addMetadata(street, ColumnMetadata.named("street").ofType(12).withSize(100));
-        addMetadata(userId, ColumnMetadata.named("user_id").ofType(12).withSize(10).notNull());
+        addMetadata(userId, ColumnMetadata.named("user_id").ofType(-5).withSize(19).notNull());
     }
 
 }

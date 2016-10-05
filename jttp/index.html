@@ -32,6 +32,26 @@ return null;
 return results[1] || 0;
 } 
 }
+
+function send(){
+  var _paq = _paq || [];
+  _paq.push(['trackEvent', 'survey', '2016-10-05', 'test']);
+  _paq.push(['setUserId', 'anonym']);
+  _paq.push(['setCustomDimension', 1, $('input[name="first"]:checked').val()]);
+  _paq.push(['setCustomDimension', 2, $('input[name="second"]:checked').val()]);
+  _paq.push(['setCustomDimension', 3, $('input[name="third"]:checked').val()]);
+  (function() {
+    var u=getUrlParam('hostUrl');
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; 
+	g.async=true; 
+	g.defer=true; 
+	g.src=u+'piwik.js'; 
+	s.parentNode.insertBefore(g,s);
+  })();
+}
 	</script>
 </head>
 <body>
@@ -46,9 +66,9 @@ return results[1] || 0;
                 <div class="row">
                     <div class="col-md-6">
                         <div class="well well-sm">
-                            <div class="checkbox">
+                            <div class="radio">
                                 <label>
-                                    <input type="checkbox" name="first" value="">
+                                    <input type="radio" name="first" value="Automatic time tracking">
                                     Automatic time tracking
                                 </label>
                             </div>
@@ -56,9 +76,9 @@ return results[1] || 0;
                     </div>
                     <div class="col-md-6">
                         <div class="well well-sm">
-                            <div class="checkbox">
+                            <div class="radio">
                                 <label>
-                                    <input type="checkbox" name="first" value="">
+                                    <input type="radio" name="first" value="Stronger reporting with save option, billing and overtime information">
                                     Stronger reporting with save option, billing and overtime information
                                 </label>
                             </div>
@@ -68,9 +88,9 @@ return results[1] || 0;
                 <div class="row">
                     <div class="col-md-6">
                         <div class="well well-sm margin-bottom-none">
-                            <div class="checkbox">
+                            <div class="radio">
                                 <label>
-                                    <input type="checkbox" name="first" value="">
+                                    <input type="radio" name="first" value="More riport option: gadget, chart, etc...">
                                     More riport option: gadget, chart, etc...
                                 </label>
                             </div>
@@ -78,9 +98,9 @@ return results[1] || 0;
                     </div>
                     <div class="col-md-6">
                         <div class="well well-sm margin-bottom-none">
-                            <div class="checkbox">
+                            <div class="radio">
                                 <label>
-                                    <input type="checkbox" name="first" value="">
+                                    <input type="radio" name="first" value="Make it more customisable">
                                    Make it more customisable
                                 </label>
                             </div>
@@ -115,7 +135,7 @@ return results[1] || 0;
                         <div class="well well-sm">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="second" value="">
+                                    <input type="radio" name="second" value="Manager">
                                     Manager
                                 </label>
                             </div>
@@ -127,7 +147,7 @@ return results[1] || 0;
                         <div class="well well-sm">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="second" value="">
+                                    <input type="radio" name="second" value="Developer">
                                     Developer
                                 </label>
                             </div>
@@ -139,7 +159,7 @@ return results[1] || 0;
                         <div class="well well-sm margin-bottom-none">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="second" value="">
+                                    <input type="radio" name="second" value="Administrator">
                                     Administrator
                                 </label>
                             </div>
@@ -151,7 +171,7 @@ return results[1] || 0;
                         <div class="well well-sm margin-bottom-none">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="second" value="">
+                                    <input type="radio" name="second" value="Other">
                                    Other
                                 </label>
                             </div>
@@ -190,7 +210,7 @@ return results[1] || 0;
                         <div class="well well-sm">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="second" value="">
+                                    <input type="radio" name="third" value="It's just all what I need!">
                                     It's just all what I need!
                                 </label>
                             </div>
@@ -202,7 +222,7 @@ return results[1] || 0;
                         <div class="well well-sm">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="second" value="">
+                                    <input type="radio" name="third" value="It's almost as good as the paid solutions.">
                                     It's almost as good as the paid solutions.
                                 </label>
                             </div>
@@ -214,7 +234,7 @@ return results[1] || 0;
                         <div class="well well-sm margin-bottom-none">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="second" value="">
+                                    <input type="radio" name="third" value="It's installed by our admin and I have to user it.">
                                     It's installed by our admin and I have to user it.
                                 </label>
                             </div>
@@ -229,7 +249,7 @@ return results[1] || 0;
                             Back</button>
                     </div>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-sm btn-block" onclick="alert('send')">
+                        <button type="button" class="btn btn-success btn-sm btn-block" onclick="send(); alert('send');">
                             Send</button>
                     </div>
                     <div class="col-md-4">

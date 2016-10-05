@@ -19,15 +19,18 @@
 </style>
 	<script>
 	$(document).ready(function() {
-	$('#showMe').val(parent.everit.jttp.main.options.dateFormatted);
-	$('#showMe').text(parent.everit.jttp.main.options.dateFormatted);
-	$('#showMe').attr('data-eht-jttp',parent.everit.jttp.main.options.dateFormatted);
+	$('#showMe').val(getUrlParam('hostUrl'));
+	$('#showMe').text(getUrlParam('hostUrl'));
+	$('#showMe').attr(getUrlParam('hostUrl'));
 });
 
-function showMe(){
-$('#showMe').val(parent.everit.jttp.main.options.dateFormatted);
-	$('#showMe').text(parent.everit.jttp.main.options.dateFormatted);
-	$('#showMe').attr('data-eht-jttp',parent.everit.jttp.main.options.dateFormatted);
+function getUrlParam(name){
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	if (results==null){
+return null;
+}else{
+return results[1] || 0;
+} 
 }
 	</script>
 </head>

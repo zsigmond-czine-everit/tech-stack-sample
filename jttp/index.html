@@ -17,10 +17,17 @@
      margin-right: auto;
 }
 </style>
-	
+	<script>
+	$(document).ready(function() {
+	$('#showMe').val(everit.jttp.main.options.dateFormatted);
+	$('#showMe').text(everit.jttp.main.options.dateFormatted);
+	$('#showMe').attr('data-eht-jttp',everit.jttp.main.options.dateFormatted);
+});
+
+	</script>
 </head>
 <body>
-
+	<div id="showMe"></div>
     <div class="col-md-5" id="panel1">
         <div class="panel panel-default">
             <div class="panel-heading">

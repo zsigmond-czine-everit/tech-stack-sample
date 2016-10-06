@@ -1,293 +1,301 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Satisfaction Survey Template | PrepBootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8" />
+<title>Satisfaction Survey Template | PrepBootstrap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<style>
-	.center {
-     float: none;
-     margin-left: auto;
-     margin-right: auto;
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="survey.js"></script>
+<style>
+.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
-	<script type="text/javascript">
-  
-function getUrlParam(name){
-	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-	if (results==null){
-return null;
-}else{
-return results[1] || 0;
-} 
-}
-function getAnaliticsUrl(){
-return getUrlParam('analiticsUrl');
-}
+<script type="text/javascript">
+  function getUrlParam(name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+      return null;
+    } else {
+      return results[1] || 0;
+    }
+  }
+  function getAnaliticsUrl() {
+    return getUrlParam('analiticsUrl');
+  }
 
-function getActionUrl(){
-return getUrlParam('actionUrl');;
-}
-function send(){
-  var category = 'Survey';
-  var action = "Strat time";
-  var name = "2016-10-05";
-  var d1 = $('input[name="first"]:checked').val();
-  var d2 = $('input[name="second"]:checked').val();
-  var d3 = $('input[name="third"]:checked').val();
-  var siteId = 1;
-  var rand = Math.floor((Math.random() * 10000000000) + 1); 
-  
-  var analiticsUrl = getAnaliticsUrl() + 'piwik.php?e_c=' + encodeURIComponent(category) + '&e_a=' + encodeURIComponent(action) + '&e_n=' + encodeURIComponent(name) + '&dimension10=' + encodeURIComponent(d1) + '&dimension11=' + encodeURIComponent(d2) + '&dimension12=' + encodeURIComponent(d3) + '&uid=anonym' + rand + '&_id=anonym' + rand + '&idsite=' + siteId + '&rec=1&apiv=1&rand=' + rand;
-  $.get(analiticsUrl);
-  var url = getUrlParam('actionUrl');
-  $.get(url + '?action=save');
-  
-  $('#panel3').hide();
-  $('#finish').show();
-}
+  function getActionUrl() {
+    return getUrlParam('actionUrl');
+  }
+  function send() {
+    var category = 'Survey';
+    var action = "Strat time";
+    var name = "2016-10-05";
+    var d1 = $('input[name="first"]:checked').val();
+    var d2 = $('input[name="second"]:checked').val();
+    var d3 = $('input[name="third"]:checked').val();
+    var siteId = 1;
+    var rand = Math.floor((Math.random() * 10000000000) + 1);
 
-function notShowAgain() {
-	var url = getUrlParam('actionUrl');
-	$.get(url + '?action=not-show-again');
-}
-	</script>
+    var analiticsUrl = getAnaliticsUrl() + 'piwik.php?e_c=' + encodeURIComponent(category)
+        + '&e_a=' + encodeURIComponent(action) + '&e_n=' + encodeURIComponent(name)
+        + '&dimension10=' + encodeURIComponent(d1) + '&dimension11=' + encodeURIComponent(d2)
+        + '&dimension12=' + encodeURIComponent(d3) + '&uid=anonym' + rand + '&_id=anonym' + rand
+        + '&idsite=' + siteId + '&rec=1&apiv=1&rand=' + rand;
+    $.get(analiticsUrl);
+
+    var actionUrl = getUrlParam('actionUrl');
+    $.get(actionUrl + '?action=save&startDate=' + getSurveyStartDateString());
+
+    $('#panel3').hide();
+    $('#finish').show();
+  }
+
+  function notShowAgain() {
+    var url = getUrlParam('actionUrl');
+    $.get(url + '?action=not-show-again');
+  }
+</script>
 </head>
 <body>
-    <div class="col-md-5" id="panel1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <span class="fa fa-question-circle"></span>What is the most necessary thing for you?</h3>
+  <div class="col-md-5" id="panel1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span class="fa fa-question-circle"></span>What is the most necessary thing for you?
+        </h3>
+      </div>
+      <div class="panel-body two-col">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="well well-sm">
+              <div class="radio">
+                <label> <input type="radio" name="first" value="Automatic time tracking">
+                  Automatic time tracking
+                </label>
+              </div>
             </div>
-            <div class="panel-body two-col">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="well well-sm">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="first" value="Automatic time tracking">
-                                    Automatic time tracking
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="well well-sm">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="first" value="Stronger reporting with save option, billing and overtime information">
-                                    Stronger reporting with save option, billing and overtime information
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="well well-sm margin-bottom-none">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="first" value="More riport option: gadget, chart, etc...">
-                                    More riport option: gadget, chart, etc...
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="well well-sm margin-bottom-none">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="first" value="Make it more customisable">
-                                   Make it more customisable
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="col-md-6">
+            <div class="well well-sm">
+              <div class="radio">
+                <label> <input type="radio" name="first"
+                  value="Stronger reporting with save option, billing and overtime information">
+                  Stronger reporting with save option, billing and overtime information
+                </label>
+              </div>
             </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-sm btn-block" onclick="$('#panel1').hide(); $('#panel2').show();">
-                            Next</button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-sm btn-block" onclick="notShowAgain(); $('#panel1').hide(); $('#notShowAgain').show();">
-                            Do not show again</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="well well-sm margin-bottom-none">
+              <div class="radio">
+                <label> <input type="radio" name="first"
+                  value="More riport option: gadget, chart, etc..."> More riport option:
+                  gadget, chart, etc...
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="well well-sm margin-bottom-none">
+              <div class="radio">
+                <label> <input type="radio" name="first" value="Make it more customisable">
+                  Make it more customisable
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-4">
+            <button type="button" class="btn btn-success btn-sm btn-block"
+              onclick="$('#panel1').hide(); $('#panel2').show();">Next</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-sm btn-block"
+              onclick="notShowAgain(); $('#panel1').hide(); $('#notShowAgain').show();">Do
+              not show again</button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-	<div class="col-md-5" id="panel2" style="display: none;">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <span class="fa fa-question-circle"></span>What is role at the company?</h3>
+  <div class="col-md-5" id="panel2" style="display: none;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span class="fa fa-question-circle"></span>What is role at the company?
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6 center">
+            <div class="well well-sm">
+              <div class="radio">
+                <label> <input type="radio" name="second" value="Manager"> Manager
+                </label>
+              </div>
             </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-6 center">
-                        <div class="well well-sm">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="second" value="Manager">
-                                    Manager
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-				<div class="row">
-                    <div class="col-md-6 center">
-                        <div class="well well-sm">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="second" value="Developer">
-                                    Developer
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 center">
-                        <div class="well well-sm margin-bottom-none">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="second" value="Administrator">
-                                    Administrator
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-				<div class="row">
-                    <div class="col-md-6 center">
-                        <div class="well well-sm margin-bottom-none">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="second" value="Other">
-                                   Other
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-					<div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-sm btn-block" onclick="$('#panel2').hide(); $('#panel1').show();">
-                            Back</button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-sm btn-block" onclick="$('#panel2').hide(); $('#panel3').show();">
-                            Next</button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-sm btn-block" onclick="notShowAgain(); $('#panel2').hide(); $('#notShowAgain').show();">
-                            Do not show again</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-	
-	<div class="col-md-5" id="panel3" style="display: none;">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    <span class="fa fa-question-circle"></span>Why did you chose our Timetracker?</h3>
+        <div class="row">
+          <div class="col-md-6 center">
+            <div class="well well-sm">
+              <div class="radio">
+                <label> <input type="radio" name="second" value="Developer">
+                  Developer
+                </label>
+              </div>
             </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-9 center">
-                        <div class="well well-sm">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="third" value="It's just all what I need!">
-                                    It's just all what I need!
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-				<div class="row">
-                    <div class="col-md-9 center">
-                        <div class="well well-sm">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="third" value="It's almost as good as the paid solutions.">
-                                    It's almost as good as the paid solutions.
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-9 center">
-                        <div class="well well-sm margin-bottom-none">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="third" value="It's installed by our admin and I have to user it.">
-                                    It's installed by our admin and I have to user it.
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-				</div>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-					<div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-sm btn-block" onclick="$('#panel3').hide(); $('#panel2').show();">
-                            Back</button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-sm btn-block" onclick="send();">
-                            Send</button>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-sm btn-block" onclick="notShowAgain(); $('#panel3').hide(); $('#notShowAgain').show();">
-                            Do not show again</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-	
-	<div class="col-md-5" id="finish" style="display: none;">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Help us to improce Timetracker, just one minutre</h3>
+        <div class="row">
+          <div class="col-md-6 center">
+            <div class="well well-sm margin-bottom-none">
+              <div class="radio">
+                <label> <input type="radio" name="second" value="Administrator">
+                  Administrator
+                </label>
+              </div>
             </div>
-            <div class="panel-body">
-                <div><p>Thnak you for yout time!</p><br/><p>Send feedback if you hjave any more suggestion</p><br/><p>Bezáráshoz a popup Xre kattolj</p></div>
-			</div>
+          </div>
         </div>
-    </div>
-	
-	<div class="col-md-5" id="notShowAgain" style="display: none;">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Help us to improce Timetracker, just one minutre</h3>
+        <div class="row">
+          <div class="col-md-6 center">
+            <div class="well well-sm margin-bottom-none">
+              <div class="radio">
+                <label> <input type="radio" name="second" value="Other"> Other
+                </label>
+              </div>
             </div>
-            <div class="panel-body">
-                <div><p>Köszönjük a popup bezárásához a popup Xre kattolj</p></div>
-			</div>
+          </div>
         </div>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-sm btn-block"
+              onclick="$('#panel2').hide(); $('#panel1').show();">Back</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-success btn-sm btn-block"
+              onclick="$('#panel2').hide(); $('#panel3').show();">Next</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-sm btn-block"
+              onclick="notShowAgain(); $('#panel2').hide(); $('#notShowAgain').show();">Do
+              not show again</button>
+          </div>
+        </div>
+      </div>
     </div>
-	
+  </div>
+
+  <div class="col-md-5" id="panel3" style="display: none;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span class="fa fa-question-circle"></span>Why did you chose our Timetracker?
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-9 center">
+            <div class="well well-sm">
+              <div class="radio">
+                <label> <input type="radio" name="third" value="It's just all what I need!">
+                  It's just all what I need!
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9 center">
+            <div class="well well-sm">
+              <div class="radio">
+                <label> <input type="radio" name="third"
+                  value="It's almost as good as the paid solutions."> It's almost as good as
+                  the paid solutions.
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9 center">
+            <div class="well well-sm margin-bottom-none">
+              <div class="radio">
+                <label> <input type="radio" name="third"
+                  value="It's installed by our admin and I have to user it."> It's installed
+                  by our admin and I have to user it.
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-sm btn-block"
+              onclick="$('#panel3').hide(); $('#panel2').show();">Back</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-success btn-sm btn-block" onclick="send();">
+              Send</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-primary btn-sm btn-block"
+              onclick="notShowAgain(); $('#panel3').hide(); $('#notShowAgain').show();">Do
+              not show again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5" id="finish" style="display: none;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Help us to improce Timetracker, just one minutre</h3>
+      </div>
+      <div class="panel-body">
+        <div>
+          <p>Thnak you for yout time!</p>
+          <br />
+          <p>Send feedback if you hjave any more suggestion</p>
+          <br />
+          <p>Bezáráshoz a popup Xre kattolj</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5" id="notShowAgain" style="display: none;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Help us to improce Timetracker, just one minutre</h3>
+      </div>
+      <div class="panel-body">
+        <div>
+          <p>Köszönjük a popup bezárásához a popup Xre kattolj</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

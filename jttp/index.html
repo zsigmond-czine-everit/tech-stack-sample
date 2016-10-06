@@ -17,13 +17,13 @@
      margin-right: auto;
 }
 </style>
-	<script>
-	$(document).ready(function() {
-	$('#showMe').val(getUrlParam('hostUrl'));
-	$('#showMe').text(getUrlParam('hostUrl'));
-	$('#showMe').attr(getUrlParam('hostUrl'));
-});
-
+	<script type="text/javascript">
+  (function() {
+    var u=getUrlParam('hostUrl');
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+  
 function getUrlParam(name){
 	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 	if (results==null){
@@ -34,28 +34,22 @@ return results[1] || 0;
 }
 
 function send(){
-  var _paq = _paq || [];
-  _paq.push(['trackEvent', 'survey', '2016-10-05', 'test']);
-  _paq.push(['setUserId', 'anonym']);
-  _paq.push(['setCustomDimension', 1, $('input[name="first"]:checked').val()]);
-  _paq.push(['setCustomDimension', 2, $('input[name="second"]:checked').val()]);
-  _paq.push(['setCustomDimension', 3, $('input[name="third"]:checked').val()]);
-  (function() {
-    var u=getUrlParam('hostUrl');
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 1]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; 
-	g.async=true; 
-	g.defer=true; 
-	g.src=u+'piwik.js'; 
-	s.parentNode.insertBefore(g,s);
-  })();
+  var host = getUrlParam('hostUrl');
+  var category = 'Survey';
+  var action = "Strat time";
+  var name = "2016-10-05";
+  var d1 = $('input[name="first"]:checked').val();
+  var d2 = $('input[name="second"]:checked').val();
+  var d3 = $('input[name="third"]:checked').val();
+  var siteId = 1;
+  var rand = Math.floor((Math.random() * 10000000000) + 1); 
+  
+  var url = host + 'piwik.php?e_c=' + encodeURIComponent(category) + '&e_a=' + encodeURIComponent(action) + '&e_n=' + encodeURIComponent(name) + '&dimension10=' + encodeURIComponent(d1) + '&dimension11=' + encodeURIComponent(d2) + '&dimension12=' + encodeURIComponent(d3) + '&uid=anonym' + rand + '&_id=anonym' + rand + '&idsite=' + siteId + '&rec=1&apiv=1&rand=' + rand;
+  $.get(url);
 }
 	</script>
 </head>
 <body>
-	<div id="showMe"></div>
     <div class="col-md-5" id="panel1">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -111,7 +105,7 @@ function send(){
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-sm btn-block" onclick="$('#panel1').hide(); $('#panel2').show(); showMe();">
+                        <button type="button" class="btn btn-success btn-sm btn-block" onclick="$('#panel1').hide(); $('#panel2').show();">
                             Next</button>
                     </div>
                     <div class="col-md-4">

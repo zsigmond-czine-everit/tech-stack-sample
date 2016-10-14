@@ -5,3 +5,7 @@ function getSurveyStartDateString() {
 function getSurveyStartDate() {
   return new Date(getSurveyStartDateString());
 }
+
+function showSurvey(){
+	return true;
+}

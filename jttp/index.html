@@ -60,7 +60,7 @@
 
   function notShowAgain() {
     var url = getUrlParam('actionUrl');
-    $.get(url + '?action=not-show-again');
+    $.get(url + '?action=not-show-again&startDate=' + getSurveyStartDateString());
   }
 </script>
 </head>
